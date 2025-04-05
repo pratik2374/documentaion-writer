@@ -54,14 +54,24 @@ def generate_documentation(parsed_data):
     
     return documentation
 
-# Example usage
+
+
+
+
 file_path = "example.py"  # Replace with an actual Python script path
 parsed_data = parse_python_code(file_path)
 documentation = generate_documentation(parsed_data)
-print(type(documentation))
-with open("readme.md", "w") as f:
-    f.write(documentation)
+
+# Convert documentation to markdown format
+markdown_content = "\n".join(f"## {func_name}\n{doc}\n" for func_name, doc in documentation.items())
+
+# Save the markdown content to output.md
+with open("output.md", "w", encoding="utf-8") as f:
+    f.write(markdown_content)
+
 print(documentation)
+
+
 
 # from tree_sitter_languages import get_language
 
